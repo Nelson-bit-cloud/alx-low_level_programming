@@ -15,7 +15,7 @@ unsigned int binary_to_uint(const char *b)
 	/* Check if the input string is NULL */
 	if (!b)
 		return (0);
-	/* Validate that the string contains only '0' and '1' characters */
+	/* Validate that the string contains only '0' and '1' characters*/
 	for (a = 0; b[a] != '\0'; a++)
 	{
 		if (b[a] != '0' && b[a] != '1')
