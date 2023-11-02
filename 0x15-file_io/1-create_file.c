@@ -9,9 +9,9 @@
  */
 int create_file(const char *filename, char *text_content)
 {
-	int fd;/*File descriptor for the created file*/
-	int nletters;/*Number of letters in text_content*/
-	int rwr;/*Number of letters written to the file*/
+	int fd; /*File descriptor for the created file*/
+	int nletters; /*Number of letters in text_content*/
+	int rwr; /*Number of letters written to the file*/
 
 	/*Check if the filename is NULL*/
 	if (!filename)
@@ -29,12 +29,8 @@ int create_file(const char *filename, char *text_content)
 	text_content = "";
 
 	/*Count the number of letters in the text_content*/
-	for
-	{
-	nletters = 0;
-	text_content[nletters];
-	nletters++;
-	}
+	for (nletters = 0; text_content[nletters]; nletters++)
+	;
 	/*Write the text content to the file*/
 	rwr = write(fd, text_content, nletters);
 
