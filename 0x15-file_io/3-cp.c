@@ -37,21 +37,17 @@ int main(int argc, char *argv[])
 	int file_from, file_to, err_close;
 	ssize_t nchars, nwr;
 	char buf[1024];
-
 	/*Check if the number of arguments is not equal to 3*/
 	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "%s\n", "Usage: cp file_from file_to");
 		exit(97);
 	}
-
 	/*open the source file for reading, the destination file for writing*/
 	file_from = open(argv[1], O_RDONLY);
 	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, 0664);
 	error_file(file_from, file_to, argv);
-
 	nchars = 1024;
-
 	/*Read and copy the file in chunks of 1024 characters*/
 	while (nchars == 1024)
 	{
@@ -59,13 +55,11 @@ int main(int argc, char *argv[])
 		if (nchars == -1)
 		error_file(-1, 0, argv);
 		nwr = write(file_to, buf, nchars);
-		/*Check for write error*/
-		if (nwr == -1)
+
+		if (nwr == -1) /*Check for write error*/
 		error_file(0, -1, argv);
 	}
-
-	/*Close the source file and check for errors*/
-	err_close = close(file_from);
+	err_close = close(file_from); /*Close the source file and check for errors*/
 	if (err_close == -1)
 	{
 		dprintf(STDERR_FILENO,
@@ -73,7 +67,6 @@ int main(int argc, char *argv[])
 		file_from);
 		exit(100);
 	}
-
 	err_close = close(file_to);
 	if (err_close == -1)
 	{
