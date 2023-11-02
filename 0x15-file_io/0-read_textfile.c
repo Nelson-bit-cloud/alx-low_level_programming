@@ -17,10 +17,10 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	/*Check if the filename is NULL*/
 	if (!filename)
 	return (0);
-	
+
 	/*Open the file for reading*/
 	fd = open(filename, O_RDONLY);
-	
+
 	/*Check if the open operation failed*/
 	if (fd == -1)
 	return (0);
@@ -35,7 +35,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 	/*Write the contents of the buffer to the standard output*/
 	nwr = write(STDOUT_FILENO, buf, nrd);
-	
+
 	/*Close the file*/
 	close(fd);
 
